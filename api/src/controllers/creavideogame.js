@@ -1,6 +1,6 @@
 const {Videogame,Genre} = require('../db.js');
 
-// Ruta POST /videogames
+
 async function creavideogame (req, res) {
   
   const { name, description, image, released, rating, platforms, genres  } = req.body;
