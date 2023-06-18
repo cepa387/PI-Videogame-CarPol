@@ -1,0 +1,9 @@
+.card{
+    background: linear-gradient(rgba(80, 117, 212, 0.9), rgba(53, 53, 53, 0.8));
+    border-radius: 8px;
+    width: fit-content;
+    overflow: show;
+    border: 1px solid white;
+    padding: 6px;
+    padding-left: 10px;
+}
