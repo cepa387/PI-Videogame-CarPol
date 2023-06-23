@@ -5,6 +5,14 @@ const { Genre } = require('../db.js');
 
 async function genres (req, res) {
   try {
+
+       const genreBD = await Genre.findAll()
+
+
+    if(genreBD){
+      // console.log(genreBD)
+      res.status(200).json(genreBD)
+    }else{
     const response = await axios.get(`https://api.rawg.io/api/genres?key=${YOUR_API_KEY}`);
     const genresAPI = response.data.results;
     
@@ -17,6 +25,7 @@ async function genres (req, res) {
     }));
     
     res.status(200).json(createdGenres);
+  }
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

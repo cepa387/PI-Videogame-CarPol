@@ -21,7 +21,7 @@ async function creavideogame(req, res) {
     // Asociar los géneros encontrados al nuevo juego
     await newGame.setGenres(foundGenres);
 
-    res.status(200).json(newGame);
+    res.status(200).json("Creado Exitosamente");
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

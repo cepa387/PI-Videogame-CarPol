@@ -8,26 +8,22 @@ async function idvideogame (req, res) {
     const {idVideogame } = req.params 
 
     try {
-      let game;
+      let dbgame;
 
-      if(idVideogame.toString().includes("-")){
-        game = await Videogame.findByPk(
-          idVideogame,
-          {include: {model:Genre,attributes:['name']},}
-        )
+        if(idVideogame.toString().includes("-")){
+          dbgame = await Videogame.findByPk(
+            idVideogame,
+            {include: {model:Genre,attributes:['name']},}
+          )
+          res.status(200).json(dbgame)
       }else{
-        const response = await axios.get(`https://api.rawg.io/api/games/${idVideogame}?key=${YOUR_API_KEY}`);
+        const response = (await axios.get(`https://api.rawg.io/api/games/${idVideogame}?key=${YOUR_API_KEY}`));
         game = response.data;
-      }
-
-      if (game) {
-        res.status(200).json(game);
-      } else {
-        res.status(404).json({error: "Juego no encontrado"});
-      }
+        res.status(200).json(game)
+      }     
 
     } catch (error) {
-      res.status(500).json({error: "Error en el servidor"});
+      res.status(500).json({error: "Id no encontrado"});
     }
 }
 
