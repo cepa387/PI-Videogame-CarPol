@@ -9,11 +9,11 @@ import About from './components/About/About';
 
 function App() {
 
-  const location = useLocation();
+ const location = useLocation();
 
   return (
     <div className="App">
-
+      
       {location.pathname !== "/" && <NavBar/>}
 
       <Route exact path="/">
@@ -28,14 +28,14 @@ function App() {
         <Form />
       </Route>
 
-      <Route path="/detail">
+      <Route path="/detail/:id">
         <Detail />
       </Route>
 
       <Route path="/About">
         <About />
       </Route>
-
+      
     </div>
   );
 }

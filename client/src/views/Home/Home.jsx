@@ -2,19 +2,20 @@ import CardContainer from "../../components/CardsContainer/CardsContainer";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getVideogames } from "../../redux/actions";
+ import style from "./Home.module.css"
+ import { Filter } from "../../components/Filtrer/Filtrer";
 
-const Home = () =>{
+const Home = () => {
 
     const dispatch = useDispatch();
 
-    useEffect(()=>{
-            dispatch(getVideogames())
+    useEffect(() => {
+        dispatch(getVideogames())
     }, [dispatch]);
-    
-    return(
-        <>
-            <h1>Esta Es La Vista Home</h1>
-            <CardContainer/>
+
+    return (
+        <>         
+            <CardContainer />
         </>
     )
 }
