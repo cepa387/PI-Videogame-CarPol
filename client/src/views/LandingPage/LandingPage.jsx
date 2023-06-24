@@ -6,7 +6,7 @@ const LandingPage = () =>{
       <div class={style.title} >
         <h2>Welcome to Videogames</h2>
         <Link to="/home">
-          <button type="submit">Enter</button>
+          <button class= {style.parpadea} type="submit">PRESS START</button>
         </Link>
       </div>
       

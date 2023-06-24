@@ -1,30 +1,42 @@
-require("dotenv").config();
-const axios = require('axios');
-const { YOUR_API_KEY } = process.env;
+require('dotenv').config();
+const axios = require("axios");
+const { YOUR_API_KEY } = process.env; 
 const { Videogame, Genre } = require('../db.js');
 
-async function videogameName(req, res) {
-  const { name } = req.query;
+async function gameName (req, res){
+    const {name} = req.query;
+    
+    let gamesDB = await Videogame.findAll({
+      include: {
+        model: Genre,
+        attributes: ['name'],
+        through: { attributes: [] }
+    }
+      });
 
-  try {
-    const apiResponse = await axios.get(`https://api.rawg.io/api/games?search=${name}&key=${YOUR_API_KEY}&page_size=15`);
-    const apiGames = apiResponse.data.results;
+      if (gamesDB) {
+        var gamesDBFull = gamesDB.map((game) => {
+          const { id, name, image, rating, genres } = game;
 
-    const databaseGames = await Videogame.findAll({
-      where: { name: name },
-      include: [Genre]
-    });
+          const gameGenres = genres.map((genre) => genre.name).join(", ");
+          return { id, name, image, rating, genres: gameGenres };
+        }); 
+      }
 
-    const responseGames = apiGames.concat(databaseGames.map(game => {
-      const { id, name, image, rating, genres } = game;
-      const genresBD = genres.map(genre => genre.name).join(', ');
-      return { id, name, image, rating, genres: genresBD };
-    }));
+      const response = (await axios(`https://api.rawg.io/api/games?search=${name}&key=${YOUR_API_KEY}`));
+    const gamesAPIResults = response.data.results.slice(0,15).map(game => {
+      return{
+        id: game.id, // desde el front voy a acceder como el nombre de la propiedad
+        name: game.name,
+        image: game.background_image,
+        rating: game.rating,
+        genres: game.genres.map(g => g.name).join(", "),
+        platforms: game.platforms.map(p => p.platform.name).join(", "),
+        released: game.released
+    }
+    })
+    let getDbByName = gamesDBFull.filter(e => e.name.toLowerCase().includes(name.toLowerCase()))
+    res.status(200).json(gamesAPIResults.concat(getDbByName));
+    }
 
-    res.status(200).json(responseGames);
-  } catch (error) {
-    res.status(500).json({ error: "Error en la Base de datos" });
-  }
-}
-
-module.exports = videogameName;
+module.exports = gameName;

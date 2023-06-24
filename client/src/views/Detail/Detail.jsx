@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { idGame } from "../../redux/actions";
-import NotFound from "../../components/notFound/notFound";
+// import NotFound from "../../components/notFound/notFound";
 import style from "../Detail/Detail.module.css";
 
 function GameDetail() {
@@ -15,7 +15,7 @@ function GameDetail() {
     }, [dispatch, id]);
 
     return (
-        <div >
+        <div className={style.card}>
             
             <div className={style.card}>
                 <p>Id:  {videogame.id}</p>
@@ -25,10 +25,10 @@ function GameDetail() {
                     (<img src={videogame.background_image} className={style.img} alt="not found" />) :
                     (<img src={videogame.image} className={style.img} alt="not found" />)}</p>
                    
-                   <p> Plataformar:     {Array.isArray(videogame.platforms) ? (
+                   <p> Plataformar: {Array.isArray(videogame.platforms) ? (
                         videogame.platforms.map(p => p.platform.name).join(", ")
                     ) : (
-                        "Platforms data is not available"
+                        (videogame.platforms)
                     )}</p>
                     <p >Descripción:</p> {videogame.description}
                     <p>Fecha De Lanzamiento: {videogame.released}</p>

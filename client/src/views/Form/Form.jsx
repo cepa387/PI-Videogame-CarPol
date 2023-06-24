@@ -1,150 +1,206 @@
-import axios from "axios";
-import React, { useEffect } from 'react';
-import { useState } from "react";
-import style from "./Form.module.css";
-import { getGenres} from "../../redux/actions";
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { postGame, getGenres,getVideogames } from "../../redux/actions";
+import style from "./Form.module.css"
+// import "./Create.css";
 
+export default function Create() {
+    const dispatch = useDispatch();
+    const genres = useSelector((store) => store.genres);
+    const genres1 = Array.isArray(genres) ? genres.slice(0, 10) : [];
+    const genres2 = Array.isArray(genres) ? genres.slice(10, 20) : [];
+    
 
-const Form = () => {
-  const [game, setGame] = useState({
-    name: "",
-    description: "",
-    image: "",
-    released: "",
-    rating: 0,
-    genres: [],
-    platforms: [],
-  });
+    const [game, setGame] = useState({
+        name: "",
+        description: "",
+        image: "",
+        released: "",
+        rating: 0,
+        genres: [],
+        platforms: [],
+    });
 
-
-  const dispatch = useDispatch();
-    const genres = useSelector((state) => state.genres);
-
-  useEffect(() => {
-    if (!genres|| !genres.length) {
+    useEffect(() => {
         dispatch(getGenres());
-    }
-}, [dispatch, genres]);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
+    const randomPlatforms = ["PC", "iOS", "Android", "macOS",  "PlayStation 4", "PlayStation 5", "Xbox", "PS Vita"]
 
-//   const [errors, setErrors] = useState({
-//     name: "",
-//     description: "",
-//     image: "",
-//     released: "",
-//     rating: 0,
-//     genres: "",
-//     platforms: "",
-//   });
-
-  let platforms = ["PS4", "PS5", "PC", "SEGA", "NINTENDO 64", "NINTENDO SWITCH", "ATARI", "XBOX ONE", "XBOX X", "GAME BOY ADVANCED"];
-
-  const changeHandler = (event) => {
-    const property = event.target.name;
-    const value = event.target.value;
-
-    setGame({ ...game, [property]: value });
-  };
-
-  const submitHandler = (event) => {
-    event.preventDefault();
-    axios.post("http://localhost:3001/videogames/", game)
-      .then((res) => {
-        alert("Game created successfully");
+    const ChangeInput = (e) => {
+        if (e.target.name === "genres" || e.target.name === "platforms") {
+        const arr = game[e.target.name];
         setGame({
-          name: "",
-          description: "",
-          image: "",
-          released: "",
-          rating: 0,
-          genres: [],
-          platforms: [],
+            ...game,
+            [e.target.name]: arr.concat(e.target.value),
         });
-      })
-      .catch((err) => {
-        alert("Error creating game");
-        console.error(err);
-      });
-  };
+    } else {
+        setGame({
+            ...game,
+            [e.target.name]: e.target.value,
+        });
+    }
+    };
 
-  return (
-    <form onSubmit={submitHandler} className={style.form}>
-      <div>
-        <label>Name: </label>
-        <input
-          type="text"
-          value={game.name}
-          onChange={changeHandler}
-          name="name"
-        ></input>
-      </div>
-      <div>
-        <label>Description: </label>
-        <input
-          type="text"
-          value={game.description}
-          onChange={changeHandler}
-          name="description"
-        ></input>
-      </div>
-      <div>
-        <label>Image: </label>
-        <input
-          type="text"
-          value={game.image}
-          onChange={changeHandler}
-          name="image"
-        ></input>
-      </div>
-      <div>
-        <label>Released: </label>
-        <input
-          type="date"
-          value={game.released}
-          onChange={changeHandler}
-          name="released"
-        ></input>
-      </div>
-      <div>
-        <label>Rating: </label>
-        <input
-          type="number"
-          value={game.rating}
-          onChange={changeHandler}
-          name="rating"
-        ></input>
-      </div>
-      <div>
-        <label>Genres: </label>
-        <input
-          type="text"
-          value={game.genres}
-          onChange={changeHandler}
-          name="genres"
-        ></input>
-      </div>
-      <div>
-                <label  className={style.form}>Platforms: </label>
-                {
-                    platforms?.sort().map((platform) => {
-                        return(
-                            <div  className={style.form}>
-                                <input type="checkbox" value={platform} name='platforms'  className={style.form}/>
-                                <label  className={style.form}>{platform}</label>
-                            </div>
-                        );
-                    })
-                }
-                
+    
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const obj = {
+        name: game.name,
+        description: game.description,
+        image: game.image,
+        released: game.released,
+        rating: game.rating,
+        genres: game.genres,
+        platforms: game.platforms,
+        };
+
+        // Validaciones
+        if (!obj.name) {
+            alert("El campo nombre no puede estar vacio")
+            return
+        }
+        if (!obj.description) {
+            alert("El campo nombre no puede estar descripcion")
+            return
+        }if (!obj.released) {
+            alert("La fecha no puede estar vacio")
+            return
+        }if (obj.rating > 5 || obj.rating < 0) {
+            alert("El campo rating debe ser un numero entre 0 a 5")
+            return
+        }
+
+
+        dispatch(postGame(obj));
+        e.target.reset();
+        alert("Videogame created successfully!");
+        //  dispatch(getVideogames())
+
+        setGame({
+            name: "",
+            description: "",
+            image: "",
+            released: "",
+            rating: 0,
+            genres: [],
+            platforms: [],
+        });
+    };
+
+return (
+    <div className={style.form}>
+        <h1>Crear un videoGame</h1>
+        <form
+            noValidate
+            onChange={(e) => ChangeInput(e)}
+            onSubmit={(e) => handleSubmit(e)}
+        >
+            <div>
+            <div>
+                <div className="divTitles">
+                    <div>
+                        <label>-Name-</label>
+                        <input
+                        className="label"
+                        type="text"
+                        name="name"
+                        value={game.name}
+                        ></input>
+                    </div>
+                    <div>
+                        <label>-Description-</label>
+                        <input
+                        className="label"
+                        type="text"
+                        name="description"
+                        value={game.description}
+                        ></input>
+                    </div>
+                    <div>
+                        <label>-Released-</label>
+                        <input
+                        className="label"
+                        type="date"
+                        name="released"
+                        value={game.released}
+                        ></input>
+                    </div>
+                    <div>
+                        <label>-Rating-</label>
+                        <input
+                        className="label"
+                        type="number"
+                        name="rating"
+                        value={game.rating}
+                        ></input>
+                    </div>
+                </div>
+                <div className="imagediv">
+                    <label>-Image URL-</label>
+                    <input
+                    className="imagein"
+                    type="text"
+                    name="image"
+                    value={game.image}
+                    ></input>
+                </div>
             </div>
-      <div>
-        <button type="submit">CREAR</button>
-      </div>
-    </form>
-  );
-};
-
-export default Form;
-
+                <div >
+                    <div >
+                        <label>-Genres-</label>
+                        <div >
+                            <div>
+                                {genres1.map((gen) => (
+                                <div key={gen.name}>
+                                    <input
+                                    type="checkbox"
+                                    name="genres"
+                                    value={gen.name}
+                                    ></input>
+                                    <label name={gen}>{gen.name}</label>
+                                </div>
+                                ))}
+                            </div>
+                            <div>
+                                {genres2.map((gen) => (
+                                <div key={gen.name}>
+                                    <input
+                                    type="checkbox"
+                                    name="genres"
+                                    value={gen.name}
+                                    ></input>
+                                    <label name={gen}>{gen.name}</label>
+                                </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                    <div >
+                        <label>-Platforms-</label>
+                        <div >
+                            {randomPlatforms.map((P) => (
+                            <div key={P}>
+                                <input
+                                type="checkbox"
+                                name="platforms"
+                                value={P}
+                                ></input>
+                                <label name={P}>{P}</label>
+                            </div>
+                            ))}
+                        </div>
+                    </div>
+                    
+                </div>
+                <button  type="submit">
+                    Create!
+                </button>
+            </div>
+        </form>
+    </div>
+);
+}
 
