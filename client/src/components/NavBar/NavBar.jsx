@@ -7,6 +7,7 @@ import style from "./NavBar.module.css"
 
 
 const NavBar = ({handleChange, handleSubmit}) => {
+    
     const dispatch = useDispatch();
     const videogames = useSelector((state) => state.videogames)
     const [Buscar, setBuscar] = useState("");
@@ -22,7 +23,7 @@ const NavBar = ({handleChange, handleSubmit}) => {
         setBuscar('');
     }
     return (
-        <div className={style.mainContainer}>
+        <div className={style.navega}>
             
             <Link to="/">INICIO</Link>
             <Link to="/home">HOME</Link>
@@ -31,7 +32,7 @@ const NavBar = ({handleChange, handleSubmit}) => {
                 <button type="submit" onClick={handleSubmit}  > Buscar! </button>
                
             
-            <Link to="/created">FORM</Link>
+            <Link to="/created">CREAR GAME</Link>
             <Link to="/About">ABOUT</Link>
 
               

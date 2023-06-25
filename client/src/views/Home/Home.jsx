@@ -57,7 +57,7 @@ export default function Home  () {
     let currentPageGames = allVideogames.slice(firtsCardPerPage, lastCardPerPage);
 
     return (
-        <div >
+        <div class= {style.backgro} >
             <NavBar  handleChange={handleChange} handleSubmit={handleSubmit} />
               <Filter paginate={paginate} />
             <CardContainer  videogames={currentPageGames} />

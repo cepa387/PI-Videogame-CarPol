@@ -13,32 +13,32 @@ import { getVideogames, buscarGame } from "../src/redux/actions";
 
 function App() {
 
- const location = useLocation();
- const dispatch = useDispatch();
-    const videogames = useSelector((state) => state.videogames)
-    const [Buscar, setBuscar] = useState("");
-    
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const videogames = useSelector((state) => state.videogames)
+  const [Buscar, setBuscar] = useState("");
 
- function handleSubmit(e) {
-  e.preventDefault();
-  dispatch(buscarGame(Buscar))
-  setBuscar('');
-  
-}
 
-function handleChange(e) {
-  e.preventDefault();
-  setBuscar(e.target.value);
-}
+  function handleSubmit(e) {
+    e.preventDefault();
+    dispatch(buscarGame(Buscar))
+    setBuscar('');
 
-useEffect(() => {
-  dispatch(getVideogames())
-}, [dispatch]);
+  }
+
+  function handleChange(e) {
+    e.preventDefault();
+    setBuscar(e.target.value);
+  }
+
+  useEffect(() => {
+    dispatch(getVideogames())
+  }, [dispatch]);
 
 
   return (
     <div className="App">
-      
+
       {/* {location.pathname !== "/" && <NavBar handleChange={handleChange} handleSubmit={handleSubmit} />} */}
 
       <Route exact path="/">
@@ -50,17 +50,20 @@ useEffect(() => {
       </Route>
 
       <Route path="/created">
+        <NavBar />
         <Form />
       </Route>
 
       <Route path="/detail/:id">
+        <NavBar />
         <Detail />
       </Route>
 
       <Route path="/About">
+        <NavBar />
         <About />
       </Route>
-      
+
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getGenres, filterByGenre, orderByCreator, orderAsc, orderDesc } from "../../redux/actions";
+import style from "../Filtrer/Filtrer.module.css"
 //  
 
 export function Filter({paginate}) {
@@ -43,9 +44,14 @@ export function Filter({paginate}) {
   };
 
   return (
-    <div className="filter">
+    
+    <div className= {style.filtro}>
+     
       <div>
-        <div>Filter by Genre</div>
+      <br></br>
+      <br></br>
+      <br></br>
+        <div className= {style.div} >Filtrar Por Genero</div>
         <select onChange={(e) => handleFilter(e)}>
           <option default>All</option>
           {genres.map((G) => (
@@ -54,7 +60,10 @@ export function Filter({paginate}) {
         </select>
       </div>
       <div>
-        <div>Order</div>
+      <br></br>
+      <br></br>
+      <br></br>
+        <div className= {style.div}>Ordenar Por</div>
         <select onChange={(e) => handleOrder(e)}>
           <option value="All" default>All</option>
           <option value="asc_name">Alphabetically (A-Z)</option>
@@ -64,7 +73,10 @@ export function Filter({paginate}) {
         </select>
       </div>
       <div>
-        <div>Filter by Creator</div>
+      <br></br>
+      <br></br>
+      <br></br>
+        <div className= {style.div}>Filtrar por Origen</div>
         <select onChange={(e) => handleCreator(e)} >
           <option default>All</option>
           <option value="Api">Api videogames</option>

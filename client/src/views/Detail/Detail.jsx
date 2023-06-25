@@ -17,27 +17,33 @@ function GameDetail() {
     return (
         <div className={style.card}>
             
-            <div className={style.card}>
-                <p>Id:  {videogame.id}</p>
-                <p>Nombre: {videogame.name}</p>
+            <div >
+                        
+                    <p>Id:  {videogame.id}</p>
+                    <p>Nombre: {videogame.name}</p>      
+                                  
+                    <p>{videogame.hasOwnProperty("background_image") ?
+                        (<img src={videogame.background_image} className={style.img} alt="not found" />) :
+                        (<img src={videogame.image} className={style.img} alt="not found" />)}</p>
+                       
 
-                <p>{videogame.hasOwnProperty("background_image") ?
-                    (<img src={videogame.background_image} className={style.img} alt="not found" />) :
-                    (<img src={videogame.image} className={style.img} alt="not found" />)}</p>
-                   
-                   <p> Plataformar: {Array.isArray(videogame.platforms) ? (
-                        videogame.platforms.map(p => p.platform.name).join(", ")
-                    ) : (
-                        (videogame.platforms)
-                    )}</p>
-                    <p >Descripción:</p> {videogame.description}
+                        <div >
+                    <p> Plataformar: {Array.isArray(videogame.platforms) ? (
+                            videogame.platforms.map(p => p.platform.name).join(", ")
+                        ) : (
+                            (videogame.platforms)
+                        )}</p>
                     <p>Fecha De Lanzamiento: {videogame.released}</p>
                     <p>Rating: {videogame.rating}</p>
                 <p>Genres:   {Array.isArray(videogame.genres) ? (
                     videogame.genres.map(genre => genre.name).join(", ")
                 ) : (
                     "Genres data is not available"
-                )}</p>
+                )}</p>       
+                    <p >Descripción:</p> {videogame.description  }
+                 
+                  
+                </div>
                 
             </div>
 

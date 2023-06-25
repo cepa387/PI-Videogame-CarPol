@@ -91,6 +91,7 @@ export default function Create() {
     };
 
 return (
+    
     <div className={style.form}>
         <h1>Crear un videoGame</h1>
         <form
@@ -100,57 +101,59 @@ return (
         >
             <div>
             <div>
-                <div className="divTitles">
+                <div >
                     <div>
-                        <label>-Name-</label>
+                        <label>Nombre: </label>
                         <input
-                        className="label"
+                      
                         type="text"
                         name="name"
                         value={game.name}
                         ></input>
                     </div>
                     <div>
-                        <label>-Description-</label>
+                        <label>Descripción: </label>
                         <input
-                        className="label"
+                        
                         type="text"
                         name="description"
                         value={game.description}
                         ></input>
                     </div>
                     <div>
-                        <label>-Released-</label>
+                        <label>Fecha Lanzamiento: </label>
                         <input
-                        className="label"
+                        
                         type="date"
                         name="released"
                         value={game.released}
                         ></input>
                     </div>
                     <div>
-                        <label>-Rating-</label>
+                        <label>Rating: </label>
                         <input
-                        className="label"
+                        
                         type="number"
                         name="rating"
                         value={game.rating}
                         ></input>
                     </div>
                 </div>
-                <div className="imagediv">
-                    <label>-Image URL-</label>
+                <div >
+                    <label>Image URL: </label>
                     <input
-                    className="imagein"
+                    
                     type="text"
                     name="image"
                     value={game.image}
                     ></input>
                 </div>
             </div>
-                <div >
+            <br/>
+                <div className={style.column}>
                     <div >
-                        <label>-Genres-</label>
+                        <label>Generos:</label>
+                        <br/><br/>
                         <div >
                             <div>
                                 {genres1.map((gen) => (
@@ -179,7 +182,8 @@ return (
                         </div>
                     </div>
                     <div >
-                        <label>-Platforms-</label>
+                        <label>Plataformas: </label>
+                        <br/><br/>
                         <div >
                             {randomPlatforms.map((P) => (
                             <div key={P}>

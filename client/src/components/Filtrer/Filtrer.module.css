@@ -1,0 +1,37 @@
+.filtro{
+
+    display: flex;
+    grid-template-columns:auto;
+    gap: 10px;
+    /* padding: 60px; */
+    justify-content: center ;
+    padding: 15px;
+}
+
+select {
+  display: block;
+  width: 100%;
+  padding: 0.3rem;
+  font-size: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+/* Estilos adicionales para el hover y el foco */
+select:hover,
+select:focus {
+  border-color: #888;
+  outline: none;
+  font-family: Arial, sans-serif;
+}
+
+.div {
+    color: black; /* Color del texto */
+    font-family: Arial, sans-serif; /* Fuente del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    font-weight: normal; /* Grosor de fuente */
+    text-align: left; /* Alineación del texto */
+    text-decoration: none; /* Decoración del texto (por defecto: ninguno) */
+  }
