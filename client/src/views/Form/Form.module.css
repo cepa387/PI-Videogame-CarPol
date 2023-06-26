@@ -1,10 +1,9 @@
 .form {
-	width: 230px;
-	margin: 0 auto;
-	padding: 20px;
-	  background-color: rgb(137, 143, 163);
+	width: 350px;
+	margin: 7% auto;
+	padding: 100px;
+	background-color: rgb(137, 143, 163);
 	border-radius: 5px;
-	padding: 2%;
   }
   
   h1 {
@@ -12,28 +11,25 @@
 	margin-bottom: 10px;
   }
   
-  form {
-	display: flex;
-	flex-direction: column;
-  }
-  
   div {
 	margin-bottom: 10px;
+	justify-content: center;
   }
   
-  /* label {
-	font-weight: bold;
+  label {
+	font-weight: 500;
+	
   }
-   */
-  /* input[type="text"],
+  
+  input[type="text"],
   input[type="date"],
   input[type="number"] {
-	width: 100%;
-	padding: 8px;
+	width: 41%;
+	padding: 0px;
 	border: 1px solid #ccc;
 	border-radius: 4px;
-	box-sizing: border-box;
-  } */
+	/* box-sizing: border-box; */
+  }
   
   input[type="checkbox"] {
 	margin-right: 5px;
@@ -81,7 +77,8 @@
   /* Estilo para el contenedor de las columnas */
   .column {
 	display: flex;
-	gap: 20px;
+	gap: 0px;
+	text-align: left;
   }
   
   /* Estilo para las columnas */

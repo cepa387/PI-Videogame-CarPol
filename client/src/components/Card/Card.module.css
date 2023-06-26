@@ -6,17 +6,20 @@
     align-items: center;
     /* width: 200px;
     height: 300px; */
-    border: 5px solid #ccc;
+    border: 5px solid #e03e3e;
     border-radius: 10px;
-    padding: 0px;
+    padding: 10px;
     box-shadow: 0 2px 4px rgba(153, 12, 12, 0.1);
     background-color: rgb(137, 143, 163);
+    /* font-family: 'Roboto Mono', monospace; */
+    font-size: small;
+    text-align: justify;
 }
 
 .img {
-    width: 80%;
+    width: 90%;
+    /* margin-bottom: 10px; */
   height: auto;
-  /* margin-bottom: 10px; */
     
     
 }

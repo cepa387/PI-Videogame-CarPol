@@ -3,6 +3,11 @@
     display: 'flex';
     justify-content:center ;
      align-items: 'center'; 
-     height: max-content;
-    /* background: url("./Load.gif"); */
+     height: 25vh;;
 }
+
+
+.center img {
+    max-width: 100%;
+    max-height: 100%;
+  }

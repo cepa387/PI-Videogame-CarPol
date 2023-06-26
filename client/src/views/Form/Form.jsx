@@ -104,8 +104,7 @@ return (
                 <div >
                     <div>
                         <label>Nombre: </label>
-                        <input
-                      
+                        <input                      
                         type="text"
                         name="name"
                         value={game.name}
@@ -131,10 +130,12 @@ return (
                     </div>
                     <div>
                         <label>Rating: </label>
-                        <input
-                        
+                        <input                        
                         type="number"
                         name="rating"
+                        // step="0.1"
+                        // min="0" 
+                        // max="5"
                         value={game.rating}
                         ></input>
                     </div>

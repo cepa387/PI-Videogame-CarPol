@@ -14,11 +14,11 @@ function Card({data}) {
 			</Link>
 			<div >
 				<div >
-					<div >Name: {data.name}</div>
-					<div>Genero: {data.genres}</div>
+					<div ><strong>Name:</strong> {data.name}</div>
+					<div><strong>Genero:</strong> {data.genres}</div>
 				</div>
 				<div >
-					<div >Rating: {data.rating}</div>
+					<div ><strong>Rating:</strong> {data.rating}</div>
 				</div>
 			</div>
 		</div>

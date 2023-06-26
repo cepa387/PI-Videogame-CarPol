@@ -63,7 +63,7 @@ export function Filter({paginate}) {
       <br></br>
       <br></br>
       <br></br>
-        <div className= {style.div}>Ordenar Por</div>
+        <div className= {style.div}> Ordenar Rati/Nomb</div>
         <select onChange={(e) => handleOrder(e)}>
           <option value="All" default>All</option>
           <option value="asc_name">Alphabetically (A-Z)</option>

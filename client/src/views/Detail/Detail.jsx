@@ -19,8 +19,8 @@ function GameDetail() {
             
             <div >
                         
-                    <p>Id:  {videogame.id}</p>
-                    <p>Nombre: {videogame.name}</p>      
+                    <p><strong>Id:</strong>  {videogame.id}</p>
+                    <p><strong>Nombre:</strong> {videogame.name}</p>      
                                   
                     <p>{videogame.hasOwnProperty("background_image") ?
                         (<img src={videogame.background_image} className={style.img} alt="not found" />) :
@@ -28,19 +28,19 @@ function GameDetail() {
                        
 
                         <div >
-                    <p> Plataformar: {Array.isArray(videogame.platforms) ? (
+                    <p><strong> Plataformar:</strong> {Array.isArray(videogame.platforms) ? (
                             videogame.platforms.map(p => p.platform.name).join(", ")
                         ) : (
                             (videogame.platforms)
                         )}</p>
-                    <p>Fecha De Lanzamiento: {videogame.released}</p>
-                    <p>Rating: {videogame.rating}</p>
-                <p>Genres:   {Array.isArray(videogame.genres) ? (
+                    <p> <strong>Fecha De Lanzamiento:</strong>{videogame.released}</p>
+                    <p><strong>Rating:</strong> {videogame.rating}</p>
+                <p><strong>Genres:</strong>   {Array.isArray(videogame.genres) ? (
                     videogame.genres.map(genre => genre.name).join(", ")
                 ) : (
                     "Genres data is not available"
                 )}</p>       
-                    <p >Descripción:</p> {videogame.description  }
+                    <p ><strong>Descripción:</strong></p> {videogame.description  }
                  
                   
                 </div>

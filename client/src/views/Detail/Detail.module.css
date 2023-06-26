@@ -33,16 +33,17 @@
 .card {
     font-family: 'Roboto Mono', monospace;
     display: grid;
-    background: linear-gradient(rgba(5, 7, 12, 0.9), rgba(75, 75, 75, 0.8));
+    background-color: rgb(137, 143, 163);
     border-radius: 8px;
-    width: 50%;
+    width: 70%;
     height: 50%;
     overflow: show;
-    border: 1px solid white;
+    border: 4px solid rgb(170, 7, 7);
     padding: 10px;
-    color: white;
+    color: black;
     margin: 0 auto; /* Centra la carta horizontalmente en la pantalla */
   margin-top: 10vh;
+  
 }
 
 .cardContainer {
@@ -64,8 +65,8 @@
     border: 1px solid lightgray;
     margin: auto;
     transition: 0.5s;
-    max-width: 20%;
-    max-height: 20%;
+    max-width: 40%;
+    max-height: 30%;
     object-fit: cover;
 }
 
