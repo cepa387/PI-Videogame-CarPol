@@ -50,7 +50,6 @@ export function Filter({paginate}) {
       <div>
       <br></br>
       <br></br>
-      <br></br>
         <div className= {style.div} >Filtrar Por Genero</div>
         <select onChange={(e) => handleFilter(e)}>
           <option default>All</option>
@@ -60,7 +59,6 @@ export function Filter({paginate}) {
         </select>
       </div>
       <div>
-      <br></br>
       <br></br>
       <br></br>
         <div className= {style.div}> Ordenar Rati/Nomb</div>
@@ -73,7 +71,6 @@ export function Filter({paginate}) {
         </select>
       </div>
       <div>
-      <br></br>
       <br></br>
       <br></br>
         <div className= {style.div}>Filtrar por Origen</div>

@@ -63,7 +63,7 @@ export default function Create() {
             return
         }
         if (!obj.description) {
-            alert("El campo nombre no puede estar descripcion")
+            alert("El campo descripción no puede estar vacio")
             return
         }if (!obj.released) {
             alert("La fecha no puede estar vacio")

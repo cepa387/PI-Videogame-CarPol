@@ -6,8 +6,9 @@ import { Link } from "react-router-dom/"
 import style from "./NavBar.module.css"
 
 
-const NavBar = ({handleChange, handleSubmit}) => {
-    
+
+const NavBar = ({ handleChange, handleSubmit }) => {
+
     const dispatch = useDispatch();
     const videogames = useSelector((state) => state.videogames)
     const [Buscar, setBuscar] = useState("");
@@ -24,19 +25,16 @@ const NavBar = ({handleChange, handleSubmit}) => {
     }
     return (
         <div className={style.navega}>
-            
+
             <Link to="/">INICIO</Link>
             <Link to="/home">HOME</Link>
-            
-                <input onChange={handleChange} value={Buscar} placeholder="Buscar videogame..." type="text" ></input>
-                <button type="submit" onClick={handleSubmit}  > Buscar! </button>
-               
-            
+
+            <input onChange={handleChange} value={Buscar} placeholder="Buscar videogame..." type="text" ></input>
+            <button type="submit" onClick={handleSubmit}  > Buscar! </button>
+
+
             <Link to="/created">CREAR GAME</Link>
             <Link to="/About">ABOUT</Link>
-
-              
-
         </div>
     )
 }
