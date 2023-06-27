@@ -1,16 +1,15 @@
 import React from "react";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getVideogames, buscarGame } from "../../redux/actions";
+import {useState } from "react";
+import { useDispatch} from "react-redux";
+import { buscarGame } from "../../redux/actions";
 import { Link } from "react-router-dom/"
 import style from "./NavBar.module.css"
 
 
 
-const NavBar = ({ handleChange, handleSubmit }) => {
+const NavBar = () => {
 
     const dispatch = useDispatch();
-    const videogames = useSelector((state) => state.videogames)
     const [Buscar, setBuscar] = useState("");
 
     function handleChange(e) {

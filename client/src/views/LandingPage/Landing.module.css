@@ -51,7 +51,7 @@
   font-size:28px;
   font-family:helvetica;
 }
-.parpadea {
+/* .parpadea {
   
   animation-name: parpadeo;
   animation-duration: 1s;
@@ -62,9 +62,9 @@
   -webkit-animation-duration: 1s;
   -webkit-animation-timing-function: linear;
   -webkit-animation-iteration-count: infinite;
-}
+} */
 
-@-moz-keyframes parpadeo{  
+/* @-moz-keyframes parpadeo{  
   0% { opacity: 1.0; }
   50% { opacity: 0.0; }
   100% { opacity: 1.0; }
@@ -80,4 +80,4 @@
   0% { opacity: 1.0; }
    50% { opacity: 0.0; }
   100% { opacity: 1.0; }
-}
+} */

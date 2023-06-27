@@ -14,6 +14,7 @@ export function Filter({paginate}) {
 
 
   // Filtrado por genre
+  //Cuando se selecciona una opción en el campo de filtrado por género. Dispatcha la acción 
   const handleFilter = (e) => {
     dispatch(filterByGenre(e.target.value))
     paginate(e, 1);

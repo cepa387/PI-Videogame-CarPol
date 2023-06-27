@@ -44,10 +44,7 @@ const rootReducer = (state = initialState, action) => {
                   filteredVideogames: action.payload.videogameGenre,
                   filterBy: action.payload.genre,
                 };
-          
-            //   case ORDER_ASC_NAME:
               case ORDER_ASC_RATING:
-            //   case ORDER_DESC_NAME:
               case ORDER_DESC_RATING:
                 return {
                   ...state,

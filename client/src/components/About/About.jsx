@@ -1,7 +1,7 @@
 import React from "react"
 import styles from "./About.module.css"
 import { Link } from "react-router-dom"
-import NavBar from "../NavBar/NavBar"
+// import NavBar from "../NavBar/NavBar"
 
 const  About = () =>{
     

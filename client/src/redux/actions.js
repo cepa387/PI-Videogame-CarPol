@@ -22,7 +22,7 @@ export const getVideogames = () => {
 export function idGame(id){
     return async function(dispatch){
         const response = await axios(`http://localhost:3001/videogames/${id}`)
-        console.log("RESPONSE:",response);
+        // console.log("RESPONSE:",response);
         return dispatch({
             type:GET_USERSID ,
             payload: response.data

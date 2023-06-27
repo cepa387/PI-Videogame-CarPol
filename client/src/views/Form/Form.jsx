@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { postGame, getGenres,getVideogames } from "../../redux/actions";
+import { postGame, getGenres} from "../../redux/actions";
 import style from "./Form.module.css"
 // import "./Create.css";
 

@@ -4,10 +4,8 @@ import NotFound from "../notFound/notFound";
 
 
 function Card({ data }) {
-	return (
-		<div className={style.card}>
-
-		
+	return (	
+		<div className={style.card}>	
 			
 			<Link to={`/detail/${data.id}`}>
 				{data.image === null || !data.image ? (<NotFound image={'noimage'} />) : (
